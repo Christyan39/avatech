@@ -1,0 +1,28 @@
+{
+  "name": "avatech-landing-page",
+  "version": "1.0.0",
+  "description": "Modern landing page for Avatech - AI integration and software solutions company",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "echo 'Add your deployment script here'"
+  },
+  "keywords": [
+    "landing-page",
+    "ai-integration",
+    "software-solutions",
+    "web-development",
+    "responsive-design"
+  ],
+  "author": "Avatech",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avatech/landing-page.git"
+  },
+  "homepage": "https://avatech.com"
+}
