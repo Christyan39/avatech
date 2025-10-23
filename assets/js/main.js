@@ -64,4 +64,51 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
+
+    // Animated counter function
+    function animateCounter(element, finalValue, duration = 500) {
+        const startValue = 0;
+        const startTime = Date.now();
+        const endTime = startTime + duration;
+        
+        function updateCounter() {
+            const currentTime = Date.now();
+            const progress = Math.min((currentTime - startTime) / duration, 1);
+            
+            if (progress < 1) {
+                // Show random numbers during animation
+                const randomValue = Math.floor(Math.random() * (finalValue * 2)) + 1;
+                element.textContent = randomValue + '+';
+                requestAnimationFrame(updateCounter);
+            } else {
+                // Show final value
+                element.textContent = finalValue + '+';
+            }
+        }
+        
+        updateCounter();
+    }
+
+    // Observe stats section for counter animation
+    const statsObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const statElements = entry.target.querySelectorAll('.stat h3');
+                
+                // Animate each stat with different delays
+                setTimeout(() => animateCounter(statElements[0], 50), 200);
+                setTimeout(() => animateCounter(statElements[1], 5), 400);
+                setTimeout(() => animateCounter(statElements[2], 9), 600);
+
+                // Disconnect observer after animation starts
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    // Start observing the stats section
+    const statsSection = document.querySelector('.stats');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
+    }
 });
