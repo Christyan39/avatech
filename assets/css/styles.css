@@ -366,14 +366,29 @@ header .cta .sign-up:hover {
 .service-card .icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, #20b3b8, #00bf99);
+    background: linear-gradient(135deg, #4bcc71, #7665de, #a245f5);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 30px;
     font-size: 2rem;
-    color: white;
+    color: #333;
+    position: relative;
+    padding: 4px;
+    z-index: 2;
+}
+
+.service-card .icon::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    background: #ffffff;
+    border-radius: 50%;
+    z-index: -1;
 }
 
 .service-card h3 {
@@ -553,7 +568,7 @@ header .cta .sign-up:hover {
 
 .contact .cta a {
     background: #fff;
-    color: #20b3b8;
+    color: #000000e0;
     padding: 15px 30px;
     border-radius: 8px;
     text-decoration: none;
